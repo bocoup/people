@@ -3,26 +3,26 @@ module.exports = function( grunt ) {
 grunt.config.set( 'watch', {
 	livereload: {
 		options: {
-			livereload: true,
+			livereload: true
 		},
 		files: [ 'public/**/*' ],
-		tasks: [],
+		tasks: []
 	},
 	img: {
 		files: '<%= copy.img.cwd %>/<%= copy.img.src %>',
-		tasks: [ 'copy:img' ],
+		tasks: [ 'copy:img' ]
 	},
 	styles: {
 		files: [ '<%= stylus.dev.src %>' ],
-		tasks: [ 'stylus:dev' ],
+		tasks: [ 'stylus:dev' ]
 	},
 	html: {
 		files: '<%= template.build.src %>',
-		tasks: [ 'template:dev' ],
+		tasks: [ 'template:dev' ]
 	},
 	webpack: {
 		files: 'src/**/*.js',
-		tasks: [ 'webpack:dev' ]
+		tasks: [ 'eslint', 'webpack:dev' ]
 	}
 } );
 

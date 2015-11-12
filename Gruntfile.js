@@ -4,6 +4,7 @@ grunt.initConfig( {} );
 grunt.loadTasks( 'grunt' );
 
 grunt.registerTask( 'dev', [
+	'eslint',
 	'clean',
 	'copy',
 	'stylus:dev',

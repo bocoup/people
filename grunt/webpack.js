@@ -1,3 +1,5 @@
+var webpack = require( 'webpack' );
+
 module.exports = function( grunt ) {
 
 grunt.config.set( 'webpack', {
@@ -19,7 +21,7 @@ grunt.config.set( 'webpack', {
 						cacheDirectory: false,
 						presets: [ 'react', 'es2015' ]
 					}
-				},
+				}
 			]
 		}
 	},
@@ -28,18 +30,18 @@ grunt.config.set( 'webpack', {
 		cache: false,
 		debug: true,
 		devtool: 'eval',
-		// plugins: [
-		// 	new webpack.optimize.DedupePlugin(),
-		// 	new webpack.optimize.UglifyJsPlugin()
-		// ]
+		plugins: [
+			new webpack.optimize.DedupePlugin(),
+			new webpack.optimize.UglifyJsPlugin()
+		]
 	},
-	// build: {
-	// 	debug: false,
-	// 	plugins: [
-	// 		new webpack.optimize.DedupePlugin(),
-	// 		new webpack.optimize.UglifyJsPlugin( { compress: { warnings: false } } )
-	// 	]
-	// }
+	build: {
+		debug: false,
+		plugins: [
+			new webpack.optimize.DedupePlugin(),
+			new webpack.optimize.UglifyJsPlugin( { compress: { warnings: false } } )
+		]
+	}
 } );
 
 grunt.loadNpmTasks( 'grunt-webpack' );

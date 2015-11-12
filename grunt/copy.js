@@ -5,8 +5,8 @@ grunt.config.set( 'copy', {
 		expand: true,
 		cwd: 'src',
 		src: 'img/**/*',
-		dest: 'public/assets',
-	},
+		dest: 'public/assets'
+	}
 } );
 
 grunt.loadNpmTasks( 'grunt-contrib-copy' );

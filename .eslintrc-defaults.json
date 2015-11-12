@@ -1,0 +1,14 @@
+{
+	"extends": [
+		"eslint:recommended"
+	],
+	"rules": {
+		"no-extra-parens": [2, "functions"],
+		"block-scoped-var": 2,
+		"complexity": 2,
+		"consistent-return": 0,
+		"curly": 2,
+		"dot-notation": 2,
+		"comma-dangle": [2, "never"]
+	}
+}
