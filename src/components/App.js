@@ -1,4 +1,4 @@
-var React = require( 'react' );
+import React from 'react';
 
 class App extends React.Component {
 	render() {
@@ -6,6 +6,6 @@ class App extends React.Component {
 			<h1>Hello, World!</h1>
 		);
 	}
-};
+}
 
 export default App;

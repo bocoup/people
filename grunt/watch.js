@@ -20,6 +20,10 @@ grunt.config.set( 'watch', {
 		files: '<%= template.build.src %>',
 		tasks: [ 'template:dev' ],
 	},
+	webpack: {
+		files: 'src/**/*.js',
+		tasks: [ 'webpack:dev' ]
+	}
 } );
 
 grunt.loadNpmTasks( 'grunt-contrib-watch' );
