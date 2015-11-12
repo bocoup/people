@@ -1,18 +1,16 @@
 module.exports = function( grunt ) {
+	grunt.initConfig( {} );
+	grunt.loadTasks( "grunt" );
 
-grunt.initConfig( {} );
-grunt.loadTasks( 'grunt' );
+	grunt.registerTask( "dev", [
+		"eslint",
+		"clean",
+		"copy",
+		"stylus:dev",
+		"template:dev",
+		"webpack:dev",
+		"watch"
+	] );
 
-grunt.registerTask( 'dev', [
-	'eslint',
-	'clean',
-	'copy',
-	'stylus:dev',
-	'template:dev',
-	'webpack:dev',
-	'watch'
-] );
-
-grunt.registerTask( 'default', [ 'dev' ] );
-
+	grunt.registerTask( "default", [ "dev" ] );
 };
