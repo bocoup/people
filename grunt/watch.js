@@ -5,7 +5,11 @@ module.exports = function( grunt ) {
 			options: {
 				livereload: true
 			},
-			files: [ "public/**/*" ],
+			files: [
+				"public/**/*",
+				"tests/*.html",
+				"tests/bundle.js"
+			],
 			tasks: []
 		},
 		img: {
@@ -25,8 +29,13 @@ module.exports = function( grunt ) {
 			tasks: [ "eslint" ]
 		},
 		webpack: {
-			files: "src/**/*.js",
-			tasks: [ "webpack:dev" ]
+			files: [
+				"src/**/*.js",
+				"tests/**/*.js",
+				"!tests/bundle.js",
+				"!tests/qunit/*"
+			],
+			tasks: [ "webpack:dev", "webpack:test", "karma" ]
 		}
 	} );
 

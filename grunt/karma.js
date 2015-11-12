@@ -2,15 +2,12 @@ module.exports = function( grunt ) {
 
 	grunt.config.set( "karma", {
 		options: {
-			configFile: "test/karma.conf.js",
-			port: 9999,
-			browsers: [ "Chrome", "Firefox" ]
+			configFile: "karma.conf.js"
 		},
-		continuous: {
+		dev: {
 			singleRun: true,
-			browsers: [ "PhantomJS" ]
+			colors: true
 		}
-
 	} );
 
 	grunt.loadNpmTasks( "grunt-karma" );

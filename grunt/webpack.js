@@ -43,6 +43,22 @@ module.exports = function( grunt ) {
 				new webpack.optimize.DedupePlugin(),
 				new webpack.optimize.UglifyJsPlugin( { compress: { warnings: false } } )
 			]
+		},
+		test: {
+			entry: "./tests/unit/index.js",
+			output: {
+				path: "tests/",
+				filename: "bundle.js",
+				publicPath: "/"
+			},
+			watch: false,
+			cache: false,
+			debug: true,
+			devtool: "eval",
+			plugins: [
+				new webpack.optimize.DedupePlugin(),
+				new webpack.optimize.UglifyJsPlugin()
+			]
 		}
 	} );
 

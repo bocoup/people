@@ -9,7 +9,17 @@ module.exports = function( grunt ) {
 		"stylus:dev",
 		"template:dev",
 		"webpack:dev",
+		"webpack:test",
+		"karma",
 		"watch"
+	] );
+
+	grunt.registerTask( "test", [
+		"eslint",
+		"clean:test",
+		"copy:test",
+		"webpack:test",
+		"karma"
 	] );
 
 	grunt.registerTask( "default", [ "dev" ] );
