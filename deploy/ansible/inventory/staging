@@ -3,4 +3,4 @@
 # production server's FQDN. This is likely the only change you will need to
 # make between production and staging.
 
-deployment-workflow-staging.bocoup.com site_fqdn=deployment-workflow-staging.bocoup.com
+rbp-staging.bocoup.com site_fqdn=rbp-staging.bocoup.com commit=master
