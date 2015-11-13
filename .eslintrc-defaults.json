@@ -3,6 +3,7 @@
 		"eslint:recommended"
 	],
 	"rules": {
+		"no-console": 1,
 		"no-caller": 2,
 		"eqeqeq": 2,
 		"no-extra-parens": [2, "functions"],

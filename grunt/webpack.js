@@ -21,7 +21,7 @@ module.exports = function( grunt ) {
 
 							// https://github.com/babel/babel-loader#options
 							cacheDirectory: false,
-							presets: [ "react", "es2015" ]
+							presets: [ "react", "stage-1", "es2015"  ]
 						}
 					}
 				]
@@ -29,7 +29,7 @@ module.exports = function( grunt ) {
 		},
 		dev: {
 			watch: false,
-			cache: false,
+			cache: true,
 			debug: true,
 			devtool: "eval",
 			plugins: [
@@ -38,7 +38,7 @@ module.exports = function( grunt ) {
 			]
 		},
 		build: {
-			debug: false,
+			debug: true,
 			plugins: [
 				new webpack.optimize.DedupePlugin(),
 				new webpack.optimize.UglifyJsPlugin( { compress: { warnings: false } } )
