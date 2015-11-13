@@ -10,7 +10,7 @@ module.exports = function( grunt ) {
 		"template:dev",
 		"webpack:dev",
 		"webpack:test",
-		"karma",
+		"karma:watch:start",
 		"watch"
 	] );
 

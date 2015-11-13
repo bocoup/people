@@ -7,6 +7,10 @@ module.exports = function( grunt ) {
 		dev: {
 			singleRun: true,
 			colors: true
+		},
+		watch: {
+			background: true,
+			singleRun: false
 		}
 	} );
 

@@ -25,17 +25,22 @@ module.exports = function( grunt ) {
 			tasks: [ "template:dev" ]
 		},
 		eslint: {
-			files: [ "<%= eslint.dev.src %>", "<%= eslint.build.src %>" ],
+			files: [ "<%= eslint.build.src %>" ],
 			tasks: [ "eslint" ]
 		},
-		webpack: {
+		js: {
 			files: [
 				"src/**/*.js",
 				"tests/**/*.js",
 				"!tests/bundle.js",
 				"!tests/qunit/*"
 			],
-			tasks: [ "webpack:dev", "webpack:test", "karma" ]
+			tasks: [
+				"eslint",
+				"webpack:dev",
+				"webpack:test",
+				"karma:watch:run"
+			]
 		}
 	} );
 

@@ -1,0 +1,16 @@
+{
+	"extends": [
+		"../.eslintrc-defaults.json"
+	],
+	"ecmaFeatures": {
+		"modules": true
+	},
+	"env": {
+		"browser": true,
+		"es6": true,
+		"qunit": true
+	},
+	"globals": {
+		"APP_ENV": true
+	}
+}

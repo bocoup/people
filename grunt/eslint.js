@@ -15,17 +15,17 @@ module.exports = function( grunt ) {
 				configFile: "src/.eslintrc"
 			},
 			src: "src/**/*.js{,x}"
+		},
+		test: {
+			options: {
+				configFile: "tests/.eslintrc"
+			},
+			src: [
+				"tests/**/*.js",
+				"!tests/bundle.js",
+				"!tests/qunit/*.js"
+			]
 		}
-
-	// test: {
-	// 	options: {
-	// 		configFile: "test/.eslintrc"
-	// 	},
-	// 	src: [
-	// 		"test/**/*.js",
-	// 		"!test/temp/**/*"
-	// 	]
-	// }
 	} );
 
 	grunt.loadNpmTasks( "grunt-eslint" );
