@@ -16,7 +16,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Automatically add an entry to /etc/hosts for this Vagrant box (requires
   # sudo). This should match the Ansible host_vars/vagrant site_fqdn value.
-  config.hostsupdater.aliases = ['deployment-workflow.loc']
+  config.hostsupdater.aliases = ['rbp.loc']
 
   # A specific name looks much better than "default" in ansible output.
   config.vm.define 'vagrant'
