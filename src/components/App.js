@@ -19,7 +19,7 @@ class App extends Component {
 		localStorage.setItem( "token", data.token );
 		localStorage.setItem( "uid", data.uid );
 		this.setState( data );
-		this.props.history.pushState( this.props.location );
+		this.props.history.replaceState( this.props.location );
 	}
 
 	removeAuth() {
@@ -43,9 +43,6 @@ class App extends Component {
 				token: query.access_token,
 				uid: query.id
 			} );
-
-			delete query.access_token;
-			delete query.id;
 		}
 	}
 
