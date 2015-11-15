@@ -70,7 +70,9 @@
 		"no-this-before-super": 2,
 		"object-shorthand": 2,
 		"prefer-arrow-callback": 2,
-		"prefer-reflect": 2,
+
+		// Use Reflect when it's available on browsers
+		"prefer-reflect": 0,
 		"prefer-template": 2,
 		"require-yield": 2
 	}

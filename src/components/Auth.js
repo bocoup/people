@@ -1,24 +1,20 @@
 import React, { Component } from "react";
 
 class Auth extends Component {
-	messages() {
-		return {
-			in: (
-				<button onClick={ this.goToAuth.bind( this ) }>Log In</button>
-			),
-			out: (
-				<button>Log Out - { this.token }</button>
-			)
-		};
+	doLogIn( event ) {
+		event.preventDefault();
+		this.props.logIn();
 	}
 
-	goToAuth( event ) {
+	doLogOut( event ) {
 		event.preventDefault();
-		location.replace( this.props.authProvider );
+		this.props.logOut();
 	}
 
 	render() {
-		var message = this.messages()[ this.props.token ? "out" : "in" ];
+		let logout = <button onClick={ this.doLogOut.bind( this ) }>Log Out</button>;
+		let login = <button onClick={ this.doLogIn.bind( this ) }>Log In</button>;
+		let message = this.props.token ? logout : login;
 
 		return (
 			<div>
@@ -30,8 +26,8 @@ class Auth extends Component {
 
 Auth.propTypes = {
 	token: React.PropTypes.string,
-	setToken: React.PropTypes.func,
-	authProvider: React.PropTypes.string
+	logIn: React.PropTypes.func,
+	logOut: React.PropTypes.func
 };
 
 export default Auth;
