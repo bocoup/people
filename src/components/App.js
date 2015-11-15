@@ -3,28 +3,29 @@ import Auth from "./Auth";
 import autobind from "autobind-decorator";
 import config from "../config.js";
 import { Link } from "react-router";
+import authRecord from "../util/auth-record";
 
 @autobind
 class App extends Component {
 	constructor() {
 		super();
 
+		let { token, uid } = authRecord.get();
+
 		this.state = {
-			token: localStorage.getItem( "token" ),
-			uid: localStorage.getItem( "uid" )
+			token,
+			uid
 		};
 	}
 
 	setAuth( data ) {
-		localStorage.setItem( "token", data.token );
-		localStorage.setItem( "uid", data.uid );
+		authRecord.set( data );
 		this.setState( data );
 		this.props.history.replaceState( this.props.location );
 	}
 
-	removeAuth() {
-		localStorage.removeItem( "token" );
-		localStorage.removeItem( "uid" );
+	logOut() {
+		authRecord.clear();
 		this.setState( {
 			token: "",
 			uid: ""
@@ -53,7 +54,7 @@ class App extends Component {
 				<Auth
 					token={ this.state.token }
 					logIn={ this.logIn.bind( this ) }
-					logOut={ this.removeAuth.bind( this ) }
+					logOut={ this.logOut.bind( this ) }
 				/>
 				<Link to="/about">About</Link>
 				{this.props.children}
