@@ -30,10 +30,11 @@ class App extends Component {
 			token: "",
 			uid: ""
 		} );
+		window.location = "/";
 	}
 
 	logIn() {
-		location.replace( config.authProvider );
+		window.location = config.authProvider;
 	}
 
 	componentWillMount() {
