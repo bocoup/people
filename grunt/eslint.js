@@ -1,7 +1,7 @@
 module.exports = function( grunt ) {
 
 	grunt.config.set( "eslint", {
-		build: {
+		grunt: {
 			options: {
 				configFile: ".eslintrc"
 			},
@@ -10,7 +10,7 @@ module.exports = function( grunt ) {
 				"grunt/*.js"
 			]
 		},
-		dev: {
+		src: {
 			options: {
 				configFile: "src/.eslintrc"
 			},

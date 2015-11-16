@@ -10,8 +10,7 @@ module.exports = function( grunt ) {
 		"template:dev",
 		"webpack:dev",
 		"webpack:test",
-		"karma:watch:start",
-		"watch"
+		"karma"
 	] );
 
 	grunt.registerTask( "test", [
@@ -22,5 +21,18 @@ module.exports = function( grunt ) {
 		"karma"
 	] );
 
-	grunt.registerTask( "default", [ "dev" ] );
+	grunt.registerTask( "build", [
+		"eslint:grunt",
+		"eslint:src",
+		"clean",
+		"copy:img",
+		"stylus:build",
+		"webpack:build"
+	] );
+
+	grunt.registerTask( "default", [
+		"dev",
+		"karma:watch:start",
+		"watch"
+	] );
 };
