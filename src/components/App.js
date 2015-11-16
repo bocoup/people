@@ -4,6 +4,7 @@ import autobind from "autobind-decorator";
 import config from "../config.js";
 import { Link } from "react-router";
 import authRecord from "../util/auth-record";
+import employees from "../fetch/employees";
 
 @autobind
 class App extends Component {
@@ -14,7 +15,8 @@ class App extends Component {
 
 		this.state = {
 			token,
-			uid
+			uid,
+			employees: {}
 		};
 	}
 
@@ -45,10 +47,24 @@ class App extends Component {
 				token: query.access_token,
 				uid: query.id
 			} );
+		} else {
+			employees( this.updateEmployees.bind( this ) );
 		}
 	}
 
+	updateEmployees( data ) {
+		this.setState( {
+			employees: data
+		} );
+	}
+
 	render() {
+		let links;
+		if ( this.state.token ) {
+			links = (
+				<Link to="/list">List</Link>
+			);
+		}
 		return (
 			<div>
 				<h1><Link to="/">Hello, World!</Link></h1>
@@ -57,8 +73,10 @@ class App extends Component {
 					logIn={ this.logIn.bind( this ) }
 					logOut={ this.logOut.bind( this ) }
 				/>
-				<Link to="/about">About</Link>
-				{this.props.children}
+				<nav>
+					{ links }
+				</nav>
+				{ this.props.children }
 			</div>
 		);
 	}

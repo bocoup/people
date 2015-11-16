@@ -30,7 +30,7 @@
 			"afterLineComment": false
 		}],
 		"camelcase": [2, {
-			"properties": "always"
+			"properties": "never"
 		}],
 		"comma-spacing": [2, {
 			"before": false,
