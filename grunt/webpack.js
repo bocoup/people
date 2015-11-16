@@ -38,7 +38,7 @@ module.exports = function( grunt ) {
 			]
 		},
 		build: {
-			debug: true,
+			debug: false,
 			plugins: [
 				new webpack.optimize.DedupePlugin(),
 				new webpack.optimize.UglifyJsPlugin( { compress: { warnings: false } } )
