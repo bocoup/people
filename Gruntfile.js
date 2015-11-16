@@ -27,6 +27,7 @@ module.exports = function( grunt ) {
 		"clean",
 		"copy:img",
 		"stylus:build",
+		"template:build",
 		"webpack:build"
 	] );
 
