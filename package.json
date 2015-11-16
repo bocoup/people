@@ -8,6 +8,10 @@
     "test": "grunt test",
     "build": "grunt build"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bocoup/new-people.git"
+  },
   "author": "Leo Balter",
   "license": "MIT",
   "devDependencies": {
@@ -37,10 +41,10 @@
     "karma-qunit": "^0.1.8",
     "phantomjs": "^1.9.18",
     "qunitjs": "^1.20.0",
+    "react": "^0.14.2",
+    "react-dom": "^0.14.2",
     "react-router": "^1.0.0",
     "webpack": "^1.12.3",
-    "webpack-dev-server": "^1.12.1",
-    "react": "^0.14.2",
-    "react-dom": "^0.14.2"
+    "webpack-dev-server": "^1.12.1"
   }
 }
