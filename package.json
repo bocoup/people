@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/grunt test"
+    "start": "grunt",
+    "test": "grunt test",
+    "build": "grunt build"
   },
   "author": "Leo Balter",
   "license": "MIT",
