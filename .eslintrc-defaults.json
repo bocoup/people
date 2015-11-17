@@ -29,9 +29,7 @@
 			"beforeLineComment": true,
 			"afterLineComment": false
 		}],
-		"camelcase": [2, {
-			"properties": "never"
-		}],
+		"camelcase": 0,
 		"comma-spacing": [2, {
 			"before": false,
 			"after": true

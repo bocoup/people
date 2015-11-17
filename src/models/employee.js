@@ -28,6 +28,18 @@ const Employee = AppModel.extend( {
 			fn() {
 				return `${ this.first } ${ this.last }`;
 			}
+		},
+		github: {
+			deps: [ "github_user" ],
+			fn() {
+				return `https://github.com/${ this.github_user }`;
+			}
+		},
+		twitter_link: {
+			deps: [ "twitter" ],
+			fn() {
+				return `https://twitter.com/${ this.twitter }`;
+			}
 		}
 	}
 } );
