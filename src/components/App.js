@@ -64,25 +64,24 @@ class App extends Component {
 
 	fetchProfiles() {
 		if ( this.state.token && !this.state.profiles ) {
-			fetchProfiles( profiles => this.setState( { profiles } ) );
+			fetchProfiles( profiles => this.setState( {
+				profiles
+			} ) );
 		}
 	}
 
 	// Filter the profiles on a given slug parameter
 	filterProfiles() {
-		const profiles = this.state.profiles;
-		const slug = this.props.params.slug;
-		let filtered;
+		let profiles = this.state.profiles;
+		let slug = this.props.params.slug;
 
 		if ( slug ) {
-			filtered = profiles.filter( emp =>
+			return profiles.filter( emp =>
 				( emp.slug === slug )
 			);
 		} else {
-			filtered = profiles;
+			return profiles;
 		}
-
-		return filtered;
 	}
 
 	// Populate the children component with the profiles
