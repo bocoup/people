@@ -7,17 +7,17 @@ class Profile extends Component {
 	}
 
 	render() {
-		let employee = this.props.employees[ 0 ];
+		let profile = this.props.profiles[ 0 ];
 
 		return (
 			<div>
-				<h1>{ employee.name }</h1>
+				<h1>{ profile.name }</h1>
 
-				<div>Email: { employee.email }</div>
-				<div>Github user: { employee.github_user }</div>
-				<div>Website: { employee.website }</div>
-				<div>Twitter: { employee.twitter }</div>
-				<div>IRC: { employee.irc }</div>
+				<div>Email: { profile.email }</div>
+				<div>Github user: { profile.github_user }</div>
+				<div>Website: { profile.website }</div>
+				<div>Twitter: { profile.twitter }</div>
+				<div>IRC: { profile.irc }</div>
 
 				<Link to="/">Home</Link>
 			</div>

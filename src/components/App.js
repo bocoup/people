@@ -4,7 +4,9 @@ import autobind from "autobind-decorator";
 import config from "../config.js";
 import { Link } from "react-router";
 import authRecord from "../util/auth-record";
-import fetchEmployees from "../fetch/employees";
+
+// Data is being fetched from the employees model
+import fetchProfiles from "../fetch/employees";
 
 @autobind
 class App extends Component {
@@ -16,7 +18,7 @@ class App extends Component {
 		this.state = {
 			token,
 			uid,
-			employees: false
+			profiles: false
 		};
 	}
 
@@ -31,7 +33,7 @@ class App extends Component {
 		this.setState( {
 			token: "",
 			uid: "",
-			employees: false
+			profiles: false
 		} );
 		window.location = "/";
 	}
@@ -42,11 +44,11 @@ class App extends Component {
 
 	componentWillMount() {
 		this.updateComponent();
-		this.fetchEmployees();
+		this.fetchProfiles();
 	}
 
 	componentWillReceiveProps() {
-		this.fetchEmployees();
+		this.fetchProfiles();
 	}
 
 	updateComponent() {
@@ -60,36 +62,38 @@ class App extends Component {
 		}
 	}
 
-	fetchEmployees() {
-		if ( this.state.token && !this.state.employees ) {
-			fetchEmployees( employees => this.setState( { employees } ) );
+	fetchProfiles() {
+		if ( this.state.token && !this.state.profiles ) {
+			fetchProfiles( profiles => this.setState( { profiles } ) );
 		}
 	}
 
 	// Filter the profiles on a given slug parameter
 	filterProfiles() {
-		const employees = this.state.employees;
+		const profiles = this.state.profiles;
 		const slug = this.props.params.slug;
 		let filtered;
 
 		if ( slug ) {
-			filtered = employees.filter( emp =>
+			filtered = profiles.filter( emp =>
 				( emp.slug === slug )
 			);
 		} else {
-			filtered = employees;
+			filtered = profiles;
 		}
 
 		return filtered;
 	}
 
-	employedChildren() {
-		if ( !this.state.employees ) {
+	// Populate the children component with the profiles
+	// Cannot populate children from the Router
+	populateChildren() {
+		if ( !this.state.profiles ) {
 			return null;
 		}
 
 		return React.cloneElement( this.props.children, {
-			employees: this.filterProfiles()
+			profiles: this.filterProfiles()
 		} );
 	}
 
@@ -102,7 +106,7 @@ class App extends Component {
 					logIn={ this.logIn.bind( this ) }
 					logOut={ this.logOut.bind( this ) }
 				/>
-				{ this.employedChildren() }
+				{ this.populateChildren() }
 			</div>
 		);
 	}
