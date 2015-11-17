@@ -4,22 +4,10 @@ import { Link } from "react-router";
 class Profile extends Component {
 	constructor() {
 		super();
-
-		this.state = {
-			employee: {}
-		};
-	}
-
-	componentWillMount() {
-		let employee = this.props.employees.filter( emp =>
-			( emp.id === this.props.params.id )
-		)[ 0 ];
-
-		this.setState( { employee } );
 	}
 
 	render() {
-		let employee = this.state.employee;
+		let employee = this.props.employees[ 0 ];
 
 		return (
 			<div>

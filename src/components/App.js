@@ -66,13 +66,30 @@ class App extends Component {
 		}
 	}
 
+	// Filter the profiles on a given slug parameter
+	filterProfiles() {
+		const employees = this.state.employees;
+		const slug = this.props.params.slug;
+		let filtered;
+
+		if ( slug ) {
+			filtered = employees.filter( emp =>
+				( emp.slug === slug )
+			);
+		} else {
+			filtered = employees;
+		}
+
+		return filtered;
+	}
+
 	employedChildren() {
 		if ( !this.state.employees ) {
 			return null;
 		}
 
 		return React.cloneElement( this.props.children, {
-			employees: this.state.employees
+			employees: this.filterProfiles()
 		} );
 	}
 

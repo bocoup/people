@@ -11,7 +11,7 @@ render( (
 	<Router history={ createHistory() }>
 		<Route path="/" component={ App }>
 			<IndexRoute component={ List } />
-			<Route path="profile/:id" component={ Profile } />
+			<Route path="profile/:slug" component={ Profile } />
 
 			<Redirect from="profile" to="/" />
 			<Route path="*" component={ NoMatch } />

@@ -6,7 +6,7 @@ class ListItem extends Component {
 		var employee = this.props.employee;
 		return (
 			<li>
-				<div><Link to={ `/profile/${ employee.id }` }>{ employee.name }</Link></div>
+				<div><Link to={ `/profile/${ employee.slug }` }>{ employee.name }</Link></div>
 				<div>Email: { employee.email }</div>
 				<div>Github user: { employee.github_user }</div>
 				<div>Website: { employee.website }</div>
