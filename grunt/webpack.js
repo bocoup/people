@@ -41,9 +41,9 @@ module.exports = function( grunt ) {
 
 			debug: false,
 			plugins: [
-				new webpack.DefinePlugin({
-          APP_ENV: JSON.stringify( process.env.APP_ENV || "development" ),
-        }),
+				new webpack.DefinePlugin( {
+					APP_ENV: JSON.stringify( process.env.APP_ENV || "development" )
+				} ),
 				new webpack.optimize.DedupePlugin(),
 				new webpack.optimize.UglifyJsPlugin( { compress: { warnings: false } } )
 			]
