@@ -33,6 +33,9 @@ module.exports = function( grunt ) {
 			debug: true,
 			devtool: "eval",
 			plugins: [
+				new webpack.DefinePlugin( {
+					APP_ENV: JSON.stringify( "development" )
+				} ),
 				new webpack.optimize.DedupePlugin(),
 				new webpack.optimize.UglifyJsPlugin()
 			]
@@ -60,6 +63,9 @@ module.exports = function( grunt ) {
 			debug: true,
 			devtool: "eval",
 			plugins: [
+				new webpack.DefinePlugin( {
+					APP_ENV: JSON.stringify( "test" )
+				} ),
 				new webpack.optimize.DedupePlugin(),
 				new webpack.optimize.UglifyJsPlugin()
 			]

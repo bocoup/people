@@ -1,5 +1,3 @@
-const APP_ENV = process.env.APP_ENV || "development";
-
 // Create config object using properties descriptors, by default they are
 // not writable and not configurable (cannot be deleted). They also allow using
 // get and set methods.
