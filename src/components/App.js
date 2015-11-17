@@ -4,7 +4,7 @@ import autobind from "autobind-decorator";
 import config from "../config.js";
 import { Link } from "react-router";
 import authRecord from "../util/auth-record";
-import employees from "../fetch/employees";
+import fetchEmployees from "../fetch/employees";
 import List from "./List";
 
 @autobind
@@ -17,7 +17,7 @@ class App extends Component {
 		this.state = {
 			token,
 			uid,
-			employees: {}
+			employees: false
 		};
 	}
 
@@ -31,7 +31,8 @@ class App extends Component {
 		authRecord.clear();
 		this.setState( {
 			token: "",
-			uid: ""
+			uid: "",
+			employees: false
 		} );
 		window.location = "/";
 	}
@@ -40,12 +41,13 @@ class App extends Component {
 		window.location = config.authProvider;
 	}
 
-	componentDidMount() {
+	componentWillMount() {
 		this.updateComponent();
+		this.fetchEmployees();
 	}
 
-	componentWillUpdate() {
-		this.updateComponent();
+	componentWillReceiveProps() {
+		this.fetchEmployees();
 	}
 
 	updateComponent() {
@@ -56,15 +58,13 @@ class App extends Component {
 				token: query.access_token,
 				uid: query.id
 			} );
-		} else {
-			employees( this.updateEmployees.bind( this ) );
 		}
 	}
 
-	updateEmployees( data ) {
-		this.setState( {
-			employees: data
-		} );
+	fetchEmployees() {
+		if ( this.state.token && !this.state.employees ) {
+			fetchEmployees( employees => this.setState( { employees } ) );
+		}
 	}
 
 	employedChildren() {
@@ -80,7 +80,7 @@ class App extends Component {
 	render() {
 		let view;
 
-		if ( this.state.token && !this.props.children ) {
+		if ( this.state.employees && !this.props.children ) {
 			view = (
 				<List employees={ this.state.employees } />
 			);
