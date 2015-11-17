@@ -9,8 +9,8 @@ export default callback => {
 				active: "true"
 			}
 		},
-		success: () => {
-			callback( employees );
+		success: data => {
+			callback( data );
 		}
 	} );
 

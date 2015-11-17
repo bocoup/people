@@ -5,6 +5,7 @@ import config from "../config.js";
 import { Link } from "react-router";
 import authRecord from "../util/auth-record";
 import employees from "../fetch/employees";
+import List from "./List";
 
 @autobind
 class App extends Component {
@@ -39,7 +40,15 @@ class App extends Component {
 		window.location = config.authProvider;
 	}
 
-	componentWillMount() {
+	componentDidMount() {
+		this.updateComponent();
+	}
+
+	componentWillUpdate() {
+		this.updateComponent();
+	}
+
+	updateComponent() {
 		let query = this.props.location.query;
 
 		if ( !this.state.token && query.hasOwnProperty( "access_token" ) ) {
@@ -58,25 +67,34 @@ class App extends Component {
 		} );
 	}
 
+	employedChildren() {
+		if ( !this.props.children ) {
+			return;
+		}
+
+		return React.cloneElement( this.props.children, {
+			employees: this.state.employees
+		} );
+	}
+
 	render() {
-		let links;
-		if ( this.state.token ) {
-			links = (
-				<Link to="/list">List</Link>
+		let view;
+
+		if ( this.state.token && !this.props.children ) {
+			view = (
+				<List employees={ this.state.employees } />
 			);
 		}
+
 		return (
 			<div>
-				<h1><Link to="/">Hello, World!</Link></h1>
+				<h1><Link to="/">People @ Bocoup</Link></h1>
 				<Auth
 					token={ this.state.token }
 					logIn={ this.logIn.bind( this ) }
 					logOut={ this.logOut.bind( this ) }
 				/>
-				<nav>
-					{ links }
-				</nav>
-				{ this.props.children }
+				{ view }
 			</div>
 		);
 	}
