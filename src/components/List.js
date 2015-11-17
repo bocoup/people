@@ -3,15 +3,12 @@ import { Link } from "react-router";
 
 class ListItem extends Component {
 	render() {
-		var profile = this.props.profile;
+		let { slug, name, email, phone  } = this.props.profile;
 		return (
-			<li>
-				<div><Link to={ `/profile/${ profile.slug }` }>{ profile.name }</Link></div>
-				<div>Email: { profile.email }</div>
-				<div>Github user: { profile.github_user }</div>
-				<div>Website: { profile.website }</div>
-				<div>Twitter: { profile.twitter }</div>
-				<div>IRC: { profile.irc }</div>
+			<li className="list-item">
+				<div><Link to={ `/profile/${ slug }` }>{ name }</Link></div>
+				<div>{ email }</div>
+				<div>{ phone }</div>
 			</li>
 		);
 	}
@@ -56,7 +53,7 @@ class List extends Component {
 
 	render() {
 		return (
-			<ul>
+			<ul className="profiles-list">
 				{this.getProfilesList()}
 			</ul>
 		);

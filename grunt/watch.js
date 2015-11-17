@@ -21,7 +21,7 @@ module.exports = function( grunt ) {
 			tasks: [ "stylus:dev" ]
 		},
 		html: {
-			files: "<%= template.dev.src %>",
+			files: "<%= template.build.src %>",
 			tasks: [ "template:dev" ]
 		},
 		eslint: {

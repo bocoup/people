@@ -1,0 +1,43 @@
+html
+	font-family 'Helvetica Neue', sans-serif
+
+body
+	font-weight 300
+	overflow-y scroll
+a
+	color rgba(195, 49, 49, 1)
+
+h1, h2, h3, h4
+	font-weight 500
+	color rgba(10, 10, 10, 1)
+
+p
+	margin 0
+
+p ~ p
+	margin-top .8em
+
+.container
+	max-width 750px
+	margin auto
+	background-color #fff
+	padding 20px
+
+.background
+	padding 20px 0
+	background-color #f4f4f4
+
+.profiles-list
+	width 100%
+	padding-left 0
+	list-style none
+
+.list-item
+	border 1px solid #e4e4e4
+	margin-bottom 12px
+	background-color rgba(0, 0, 0, 0.1)
+	padding 6px
+	&:hover
+		background-color #fff
+	a
+		text-decoration none

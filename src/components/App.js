@@ -99,7 +99,7 @@ class App extends Component {
 
 	render() {
 		return (
-			<div>
+			<div className="container">
 				<h1><Link to="/">People @ Bocoup</Link></h1>
 				<Auth
 					token={ this.state.token }
