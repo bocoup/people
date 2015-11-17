@@ -5,7 +5,6 @@ import config from "../config.js";
 import { Link } from "react-router";
 import authRecord from "../util/auth-record";
 import fetchEmployees from "../fetch/employees";
-import List from "./List";
 
 @autobind
 class App extends Component {
@@ -68,8 +67,8 @@ class App extends Component {
 	}
 
 	employedChildren() {
-		if ( !this.props.children ) {
-			return;
+		if ( !this.state.employees ) {
+			return null;
 		}
 
 		return React.cloneElement( this.props.children, {
@@ -78,14 +77,6 @@ class App extends Component {
 	}
 
 	render() {
-		let view;
-
-		if ( this.state.employees && !this.props.children ) {
-			view = (
-				<List employees={ this.state.employees } />
-			);
-		}
-
 		return (
 			<div>
 				<h1><Link to="/">People @ Bocoup</Link></h1>
@@ -94,7 +85,7 @@ class App extends Component {
 					logIn={ this.logIn.bind( this ) }
 					logOut={ this.logOut.bind( this ) }
 				/>
-				{ view }
+				{ this.employedChildren() }
 			</div>
 		);
 	}
