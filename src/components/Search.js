@@ -6,22 +6,8 @@ class Search extends Component {
 		super();
 
 		this.state = {
-			query: "",
-			fuse: false
+			query: ""
 		};
-	}
-
-	componentWillMount() {
-		let fuse = new Fuse( this.props.profiles, {
-			keys: [
-				"name",
-				"email",
-				"phone",
-				"github_user"
-			]
-		} );
-
-		this.setState( { fuse } );
 	}
 
 	get valueChange() {
@@ -29,12 +15,18 @@ class Search extends Component {
 	}
 
 	searchProfiles( query ) {
-		let profiles;
+		let profiles = this.props.profiles;
 
 		if ( query.trim() !== "" ) {
-			profiles = this.state.fuse.search( query );
-		} else {
-			profiles = this.props.profiles;
+			let fuse = new Fuse( profiles, {
+				keys: [
+					"name",
+					"email",
+					"phone",
+					"github_user"
+				]
+			} );
+			profiles = fuse.search( query );
 		}
 
 		this.setState( {
