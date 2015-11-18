@@ -5,24 +5,56 @@ class Search extends Component {
 		super();
 
 		this.state = {
-			entries: {}
+			query: ""
 		};
 	}
 
-	componentWillMount() {
-		this.setState( {
-			entries: this.props.profiles
-		} );
+	get valueChange() {
+		return event => this.searchProfiles( event.target.value );
 	}
 
-	get valueChange() {
-		return event => this.props.searchProfiles( event.target.value );
+	onlyStrings( ...items ) {
+		return items.filter( item => typeof item === "string" );
+	}
+
+	isIncluded( query, items ) {
+		return items.reduce( ( prev, item ) => {
+			if ( prev ) {
+				return true;
+			}
+
+			return Boolean(
+				item.match(
+					new RegExp( query.trim(), "gim" )
+				)
+			);
+		}, false );
+	}
+
+	searchProfiles( query ) {
+		let profiles = this.props.profiles;
+		let visible = profiles.filter( profile => {
+			let { name, email, phone } = profile;
+			let strProps = this.onlyStrings( name, email, phone );
+
+			if ( query.trim() === "" ) {
+				return true;
+			}
+
+			return this.isIncluded( query, strProps );
+		} );
+
+		this.setState( {
+			query
+		} );
+
+		this.props.setVisible( visible );
 	}
 
 	render() {
 		return (
 			<div>
-				<input name="q" onChange={ this.valueChange } value={ this.props.query } />
+				<input name="q" onChange={ this.valueChange } value={ this.state.query } />
 			</div>
 		);
 	}
@@ -30,7 +62,7 @@ class Search extends Component {
 	static get propTypes() {
 		return {
 			profiles: React.PropTypes.object,
-			searchProfiles: React.PropTypes.func,
+			setVisible: React.PropTypes.func,
 			query: React.PropTypes.string
 		};
 	}

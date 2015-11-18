@@ -26,8 +26,7 @@ class List extends Component {
 		super();
 
 		this.state = {
-			visible: false,
-			query: ""
+			visible: false
 		};
 	}
 
@@ -68,23 +67,8 @@ class List extends Component {
 		}, false );
 	}
 
-	searchProfiles( query ) {
-		let profiles = this.props.profiles;
-		let visible = profiles.filter( profile => {
-			let { name, email, phone } = profile;
-			let strProps = this.onlyStrings( name, email, phone );
-
-			if ( query.trim() === "" ) {
-				return true;
-			}
-
-			return this.isIncluded( query, strProps );
-		} );
-
-		this.setState( {
-			visible,
-			query
-		} );
+	get setVisible() {
+		return visible => this.setState( { visible } );
 	}
 
 	render() {
@@ -94,8 +78,7 @@ class List extends Component {
 			<div>
 				<Search
 					profiles={ profiles }
-					searchProfiles={ this.searchProfiles.bind( this ) }
-					query={ this.state.query }
+					setVisible={ this.setVisible }
 				/>
 				<ul className="profiles-list">
 					{ this.getProfilesList() }
