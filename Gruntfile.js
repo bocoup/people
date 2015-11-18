@@ -8,9 +8,7 @@ module.exports = function( grunt ) {
 		"copy",
 		"stylus:dev",
 		"template:dev",
-		"webpack:dev",
-		"webpack:test",
-		"karma"
+		"webpack:dev"
 	] );
 
 	grunt.registerTask( "test", [
