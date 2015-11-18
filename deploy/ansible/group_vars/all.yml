@@ -81,30 +81,6 @@ shared:
 confs:
   - {file: site.conf, directory: "{{conf_dir}}"}
 
-#######
-# USERS
-#######
-
-# Specified users will be added to the remote server, along with all specified
-# public keys. Removing a user from this list does NOT remove them from the
-# remote server! You need to set their state to "absent", remove all the other
-# properties for that user, and re-run the "configure" playbook. Also, the
-# shadow password (that user's sudo password) should be a hash, and NOT plain
-# text!
-#
-# Generate a shadow password hash using the following command:
-# openssl passwd -1 -salt $(openssl rand -base64 6) yourpassword
-#
-# ===================== VERY IMPORTANT NOTE, PLEASE READ =====================
-# When creating a new project using this workflow, REPLACE THE DEFAULT USERS
-# WITH YOUR OWN USERS. If you leave the default users, we'll all have access to
-# your servers, which is something we really don't want.
-# ============================================================================
-#
-# If you have no users to define here, set users to an empty array, like:
-# users: []
-users: []
-
 ########
 # DEPLOY
 ########
