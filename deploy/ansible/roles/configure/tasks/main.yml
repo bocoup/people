@@ -42,6 +42,13 @@
     line='Defaults\tenv_keep += "SSH_AUTH_SOCK"'
     validate="visudo -cf %s"
 
+- name: ensure sudoing does not reset environment
+  lineinfile:
+    dest=/etc/sudoers
+    state=absent
+    line='Defaults\tenv_reset'
+    validate="visudo -cf %s"
+
 - name: allow passwordless sudo - development only!
   lineinfile:
     dest=/etc/sudoers
