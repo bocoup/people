@@ -72,9 +72,7 @@ class List extends Component {
 	}
 
 	render() {
-
-		// We need to force this Ampersand object to return a pure Array
-		let profiles = this.props.profiles.map( profiles => profiles );
+		let profiles = this.props.profiles;
 
 		return (
 			<div>

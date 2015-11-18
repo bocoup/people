@@ -1,5 +1,4 @@
 import React, { Component } from "react"; // eslint-disable-line no-unused-vars
-import Fuse from "fuse.js";
 
 class Search extends Component {
 	constructor() {
@@ -14,26 +13,42 @@ class Search extends Component {
 		return event => this.searchProfiles( event.target.value );
 	}
 
+	onlyStrings( ...items ) {
+		return items.filter( item => typeof item === "string" );
+	}
+
+	isIncluded( query, items ) {
+		return items.reduce( ( prev, item ) => {
+			if ( prev ) {
+				return true;
+			}
+
+			return Boolean(
+				item.match(
+					new RegExp( query.trim(), "gim" )
+				)
+			);
+		}, false );
+	}
+
 	searchProfiles( query ) {
 		let profiles = this.props.profiles;
+		let visible = profiles.filter( profile => {
+			let { name, email, phone } = profile;
+			let strProps = this.onlyStrings( name, email, phone );
 
-		if ( query.trim() !== "" ) {
-			let fuse = new Fuse( profiles, {
-				keys: [
-					"name",
-					"email",
-					"phone",
-					"github_user"
-				]
-			} );
-			profiles = fuse.search( query );
-		}
+			if ( query.trim() === "" ) {
+				return true;
+			}
+
+			return this.isIncluded( query, strProps );
+		} );
 
 		this.setState( {
 			query
 		} );
 
-		this.props.setVisible( profiles );
+		this.props.setVisible( visible );
 	}
 
 	render() {
@@ -46,7 +61,7 @@ class Search extends Component {
 
 	static get propTypes() {
 		return {
-			profiles: React.PropTypes.array,
+			profiles: React.PropTypes.object,
 			setVisible: React.PropTypes.func,
 			query: React.PropTypes.string
 		};
