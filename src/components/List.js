@@ -1,6 +1,6 @@
 import React, { Component } from "react"; // eslint-disable-line no-unused-vars
 import { Link } from "react-router";
-import Search from "./search";
+import Search from "./Search";
 
 class ListItem extends Component {
 	render() {
