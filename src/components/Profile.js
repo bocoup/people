@@ -1,5 +1,6 @@
 import React, { Component } from "react"; // eslint-disable-line no-unused-vars
 import { Link } from "react-router";
+import Gravatar from "react-gravatar";
 
 class Profile extends Component {
 	constructor() {
@@ -120,6 +121,13 @@ class Profile extends Component {
 				{ this.twitter }
 				{ this.website }
 				{ this.irc }
+
+				<div>
+					<Gravatar
+						email={ profile.email }
+						https={ location.protocol === "https:" }
+					/>
+				</div>
 
 				<Link to="/">Home</Link>
 			</div>

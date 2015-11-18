@@ -1,6 +1,7 @@
 import React, { Component } from "react"; // eslint-disable-line no-unused-vars
 import { Link } from "react-router";
 import Search from "./Search";
+import Gravatar from "react-gravatar";
 
 class ListItem extends Component {
 	render() {
@@ -10,6 +11,12 @@ class ListItem extends Component {
 				<div><Link to={ `/profile/${ slug }` }>{ name }</Link></div>
 				<div>{ email }</div>
 				<div>{ phone }</div>
+				<div>
+					<Gravatar
+						email={ email }
+						https={ location.protocol === "https:" }
+					/>
+				</div>
 			</li>
 		);
 	}
