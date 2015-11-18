@@ -103,7 +103,20 @@ confs:
 #
 # If you have no users to define here, set users to an empty array, like:
 # users: []
-users: []
+users:
+	- name: leobalter
+    state: present
+    real_name: Leonardo Balter
+    shadow_pass: $1$0j0ZOVa8$3HQfh1UwfS/mq3JTqeKmi1
+    public_keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDK2DhxqTS+g/hzAgaRRAvBv7Jg5FfLTDxAXYVfYhVtikU8W7zo36oPDyTlCUIa5tmO0c7Nyz4XvNoGna2Ie6tNnOEAAI8o01Mw41GzI7fARZPAOKns2j3nnOOm0Ij3aRINynAkAyzugeoQ2X9DSHuGq8A4P2ygOxjHoew4WBHYd5Le+d+3i5oH9+j4Kx1HotRQJcdls/sRB7HdFj6DvfTAHkXlF2Ayxch1wDRrqL8h8Xcv708qrC/kLGhTozGQ3DAICaIEz7qldOzrBC/eJ1RNPcylbtzuDiu7DuxjZFYHVUN3Bije5O/KKPQI9PctJr+h3NcgIyez+tRvELvWmPWx leonardo.balter@gmail.com
+  - name: tkellen
+    state: present
+    real_name: Tyler Kellen
+    shadow_pass: $1$SLUJWFxu$Zrq6t39fbas7duavaPLKb.
+    public_keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDASWvJsFUg1ONxaV64PSaZg9dM5xhml+oeSfetRHMeO+JtzLodFgLu+wc5UED29xYf0I7/jDPaQQFu8gEs7x6A91unjR2mZzpx4du+NrNpwj+TGTNEdf6VmbneKu/RqCxTLXvkga4DJ4uXpUfL97u6sEMZDKr1uDYjH1CXR9yhGmRnsVw0UDIbOUD9rw5ociqMSwlW362XDNJh+yRSeG80cyAYDU0YXopMc8jIzoJ8j6qVdawvnBoVUswGvjRHQbTaKNqp+tyhGKFQGdPzoSubtJ8pt6g7tldkLuxphqQ5/m5q/rb74BU48laGvl5ssigEfY2tuqN9jG35zIVJxo3J tyler@sleekcode.net
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCUpQGw83rF9wV3/0H7TJAmADHJEFJcUhvveYhflvnvBY+aunLj2hYEwdtzI/Zf4sZgDn+IdEbk5QAdmxAURPrT0rTF3SFvs/86aLaBR/UZK3ABRqqGBhP6HqaEOwGv5AnHkByMd6KB9tzpFmpmI+tkSvw0flKIA38lNO2ULd0Y+MGFvAcJ5EvLfK0fiEXyj4dh9t2gsG4cL/QPa5IydTbCmhsJkzpFxMBnghNrvoqN7r1T14meFb/PWSC2LTTR5kh5F6y4GaDBljLkwReFHr2KhzNEG3EgexzhZtDxfWR5jMXZbkkyLJZLkz/BT4EFxQe3yl0Ps0oNgFGkXNkNrvyV tyler@sleekcode.net
 
 ########
 # DEPLOY
