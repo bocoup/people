@@ -108,10 +108,6 @@ In the (hopefully) rare instance you need to manually deploy the steps are below
 	`--tags=nginx`:_
 	* [configure](deploy/ansible/roles/configure) role - Basic server
 		configuration.
-	* [users](deploy/ansible/roles/users) role - For Vagrant, enable user account
-		for the currently logged-in user so that playbooks may be run manually via
-		`run-playbook.sh` or `ansible-playbook`. For staging or production, sync any
-		users specified in `group_vars` to the server.
 	* [nginx](deploy/ansible/roles/nginx) role - Enable SSL (if specified) and
 		configure nginx.
 * [vagrant-link](deploy/ansible/vagrant-link.yml) - Link local working project
