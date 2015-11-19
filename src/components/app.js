@@ -1,5 +1,5 @@
 import React, { Component } from "react"; // eslint-disable-line no-unused-vars
-import Auth from "./Auth";
+import Auth from "./auth";
 import autobind from "autobind-decorator";
 import config from "../config.js";
 import { Link } from "react-router";

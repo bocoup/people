@@ -2,10 +2,10 @@ import React from "react"; // eslint-disable-line no-unused-vars
 import { render } from "react-dom";
 import { Router, Route, IndexRoute, Redirect } from "react-router";
 import { createHistory } from "history";
-import App from "./components/App";
-import List from "./components/List";
-import Profile from "./components/Profile";
-import NoMatch from "./components/NoMatch";
+import App from "./components/app";
+import List from "./components/list";
+import Profile from "./components/profile";
+import NoMatch from "./components/no-match";
 
 render( (
 	<Router history={ createHistory() }>
