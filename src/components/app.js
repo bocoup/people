@@ -1,6 +1,5 @@
 import React, { Component } from "react"; // eslint-disable-line no-unused-vars
 import Auth from "./auth";
-import autobind from "autobind-decorator";
 import config from "../config.js";
 import { Link } from "react-router";
 import authRecord from "../util/auth-record";
@@ -8,7 +7,6 @@ import authRecord from "../util/auth-record";
 // Data is being fetched from the employees model
 import fetchProfiles from "../requests/employees";
 
-@autobind
 class App extends Component {
 	constructor() {
 		super();
