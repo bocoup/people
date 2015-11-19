@@ -6,7 +6,7 @@ import { Link } from "react-router";
 import authRecord from "../util/auth-record";
 
 // Data is being fetched from the employees model
-import fetchProfiles from "../fetch/employees";
+import fetchProfiles from "../requests/employees";
 
 @autobind
 class App extends Component {
