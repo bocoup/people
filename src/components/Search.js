@@ -15,7 +15,6 @@ class Search extends Component {
 		let fuse = new Fuse( this.props.profiles, {
 			keys: [
 				"name",
-				"email",
 				"phone",
 				"github_user"
 			]
