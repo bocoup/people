@@ -21,7 +21,7 @@ module.exports = function( grunt ) {
 
 							// https://github.com/babel/babel-loader#options
 							cacheDirectory: false,
-							presets: [ "react", "stage-1", "es2015"  ]
+							presets: [ "react", "es2015"  ]
 						}
 					}
 				]
