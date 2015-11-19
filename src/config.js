@@ -35,7 +35,7 @@ const config = Object.create( null, {
 		get() {
 			const authRoot = `${this.API_ROOT}auth/authenticate`;
 
-			return `${authRoot}?provider=github&referer=${ location.origin }`;
+			return `${authRoot}?provider=github&referer=${ location.href }`;
 		}
 	}
 } );

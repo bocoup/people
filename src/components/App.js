@@ -25,7 +25,11 @@ class App extends Component {
 	setAuth( data ) {
 		authRecord.set( data );
 		this.setState( data );
-		this.props.history.replaceState( this.props.location );
+
+		this.props.history.replaceState(
+			this.props.location,
+			this.props.location.pathname
+		);
 	}
 
 	logOut() {
