@@ -46,7 +46,13 @@ class Search extends Component {
 	render() {
 		return (
 			<div>
-				<input name="q" onChange={ this.valueChange } value={ this.state.query } />
+				<input
+					type="text"
+					name="q"
+					onChange={ this.valueChange }
+					value={ this.state.query }
+					autocomplete="off"
+				/>
 			</div>
 		);
 	}

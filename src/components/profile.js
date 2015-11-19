@@ -1,6 +1,9 @@
 import React, { Component } from "react"; // eslint-disable-line no-unused-vars
 import { Link } from "react-router";
 import Gravatar from "react-gravatar";
+import Item from "./profile-item";
+import ProfileEdit from "./profile-edit";
+import ProfileLink from "./profile-link";
 
 class Profile extends Component {
 	constructor() {
@@ -33,6 +36,7 @@ class Profile extends Component {
 	}
 
 	render() {
+		let isUser = null;
 		let profile = this.props.profiles[ 0 ];
 		let {
 			name,
@@ -44,57 +48,60 @@ class Profile extends Component {
 			github_user,
 			twitter,
 			twitter_link,
-			irc
+			irc,
+			id
 		} = profile;
 
+		isUser = id === this.props.uid;
+
+		// Each Item represents a <p class="profile-item" /> and it will print
+		// only if the provided children has contents
+		//
+		// The ProfileLinks will accept custom protocols and repeat the provided
+		// href value as the text content if it has no children
 		return (
 			<div>
 				<h1>{ name }</h1>
 				<h2>{ position_name }</h2>
-				<ProfileLink href={ `mailto:${ email }` }>{ email }</ProfileLink>
-				<ProfileLink href={ `tel:${ phone }` }>{ phone }</ProfileLink>
-				<ProfileLink>{ website }</ProfileLink>
-				<ProfileLink href={ github }>{ github_user } @ github</ProfileLink>
-				<ProfileLink href={ twitter_link }>{ twitter } @ twitter</ProfileLink>
-				<ProfileItem>{ irc } on Freenode</ProfileItem>
+				{ isUser }
 
-				<ProfileItem>
+				<Item>
+					<ProfileLink custom="mailto" href={ email } />
+				</Item>
+
+				<Item>
+					<ProfileEdit value={ phone } canEdit={ isUser }>
+						<ProfileLink custom="tel" href={ phone } />
+					</ProfileEdit>
+				</Item>
+
+				<Item>
+					<ProfileLink href={ website } />
+				</Item>
+
+				<Item>
+					<ProfileLink href={ github }>
+						{ github_user } @ github
+					</ProfileLink>
+				</Item>
+
+				<Item>
+					<ProfileLink href={ twitter_link }>
+						{ twitter } @ twitter
+					</ProfileLink>
+				</Item>
+
+				<Item>{ irc } on Freenode</Item>
+
+				<Item>
 					<Gravatar
 						email={ profile.email }
 						https={ location.protocol === "https:" }
 					/>
-				</ProfileItem>
+				</Item>
 
 				<Link to="/">Home</Link>
 			</div>
-		);
-	}
-}
-
-class ProfileLink extends Component {
-	render() {
-		if ( !this.props.children ) {
-			return null;
-		}
-
-		let { href = this.props.children } = this.props;
-
-		return (
-			<ProfileItem><a href={ href }>{ this.props.children }</a></ProfileItem>
-		);
-	}
-}
-
-class ProfileItem extends Component {
-	render() {
-		if ( !this.props.children ) {
-			return null;
-		}
-
-		return (
-			<p className="profile-item">
-				{ this.props.children }
-			</p>
 		);
 	}
 }
