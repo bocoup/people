@@ -115,6 +115,7 @@ class Profile extends Component {
 		return (
 			<div>
 				<h1>{ profile.name }</h1>
+				<h2>{ profile.position_name }</h2>
 				{ this.email }
 				{ this.phone }
 				{ this.github }

@@ -7,7 +7,8 @@ export default ( callback, fail ) => {
 		data: {
 			filter: {
 				active: "true"
-			}
+			},
+			include: "position"
 		},
 		success: data => {
 			callback( data );

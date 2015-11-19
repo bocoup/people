@@ -1,4 +1,5 @@
 import AppModel from "./app-model";
+import Position from "./position";
 
 const Employee = AppModel.extend( {
 
@@ -22,6 +23,10 @@ const Employee = AppModel.extend( {
 		website: "string"
 	},
 
+	children: {
+		position: Position
+	},
+
 	derived: {
 		name: {
 			deps: [ "first", "last" ],
@@ -39,6 +44,12 @@ const Employee = AppModel.extend( {
 			deps: [ "twitter" ],
 			fn() {
 				return `https://twitter.com/${ this.twitter }`;
+			}
+		},
+		position_name: {
+			deps: [ "position" ],
+			fn() {
+				return this.position.name;
 			}
 		}
 	}
