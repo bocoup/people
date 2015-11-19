@@ -51,7 +51,7 @@ class Search extends Component {
 					name="q"
 					onChange={ this.valueChange }
 					value={ this.state.query }
-					autocomplete="off"
+					autoComplete="off"
 				/>
 			</div>
 		);
