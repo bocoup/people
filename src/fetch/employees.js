@@ -1,6 +1,6 @@
 import Employees from "../collections/employees";
 
-export default callback => {
+export default ( callback, fail ) => {
 	const employees = new Employees();
 
 	employees.fetch( {
@@ -11,6 +11,9 @@ export default callback => {
 		},
 		success: data => {
 			callback( data );
+		},
+		error: err => {
+			fail( err );
 		}
 	} );
 

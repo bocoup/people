@@ -68,9 +68,13 @@ class App extends Component {
 
 	fetchProfiles() {
 		if ( this.state.token && !this.state.profiles ) {
-			fetchProfiles( profiles => this.setState( {
-				profiles
-			} ) );
+			fetchProfiles(
+				profiles => this.setState( { profiles } ),
+				error => {
+					console.warn( error ); // eslint-disable-line no-console
+					alert( "Error fetching the app data!" );
+					this.logOut();
+				} );
 		}
 	}
 
