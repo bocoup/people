@@ -17,51 +17,6 @@ class Profile extends Component {
 		} );
 	}
 
-	get github() {
-		let view = null;
-		let { github_user, github } = this.state.profile;
-
-		if ( github_user ) {
-			view = (
-				<p>
-					<a href={ github }>{ github_user } @ github</a>
-				</p>
-			);
-		}
-
-		return view;
-	}
-
-	get twitter() {
-		let view = null;
-		let { twitter, twitter_link } = this.state.profile;
-
-		if ( twitter ) {
-			view = (
-				<p>
-					<a href={ twitter_link }>{ twitter } @ twitter</a>
-				</p>
-			);
-		}
-
-		return view;
-	}
-
-	get website() {
-		let view = null;
-		let { website } = this.state.profile;
-
-		if ( website ) {
-			view = (
-				<p>
-					<a href={ website }>{ website }</a>
-				</p>
-			);
-		}
-
-		return view;
-	}
-
 	get irc() {
 		let view = null;
 		let { irc } = this.state.profile;
@@ -77,61 +32,69 @@ class Profile extends Component {
 		return view;
 	}
 
-	get email() {
-		let view = null;
-		let { email } = this.state.profile;
-		let emailLink = `mailto:${ email }`;
-
-		if ( email ) {
-			view = (
-				<p>
-					<a href={ emailLink }>{ email }</a>
-				</p>
-			);
-		}
-
-		return view;
-	}
-
-	get phone() {
-		let view = null;
-		let { phone } = this.state.profile;
-		let phoneLink = `tel:${ phone }`;
-
-		if ( phone ) {
-			view = (
-				<p>
-					<a href={ phoneLink }>{ phone }</a>
-				</p>
-			);
-		}
-
-		return view;
-	}
-
 	render() {
 		let profile = this.props.profiles[ 0 ];
+		let {
+			name,
+			position_name,
+			email,
+			phone,
+			website,
+			github,
+			github_user,
+			twitter,
+			twitter_link,
+			irc
+		} = profile;
 
 		return (
 			<div>
-				<h1>{ profile.name }</h1>
-				<h2>{ profile.position_name }</h2>
-				{ this.email }
-				{ this.phone }
-				{ this.github }
-				{ this.twitter }
-				{ this.website }
-				{ this.irc }
+				<h1>{ name }</h1>
+				<h2>{ position_name }</h2>
+				<ProfileLink href={ `mailto:${ email }` }>{ email }</ProfileLink>
+				<ProfileLink href={ `tel:${ phone }` }>{ phone }</ProfileLink>
+				<ProfileLink>{ website }</ProfileLink>
+				<ProfileLink href={ github }>{ github_user } @ github</ProfileLink>
+				<ProfileLink href={ twitter_link }>{ twitter } @ twitter</ProfileLink>
+				<ProfileItem>{ irc } on Freenode</ProfileItem>
 
-				<div>
+				<ProfileItem>
 					<Gravatar
 						email={ profile.email }
 						https={ location.protocol === "https:" }
 					/>
-				</div>
+				</ProfileItem>
 
 				<Link to="/">Home</Link>
 			</div>
+		);
+	}
+}
+
+class ProfileLink extends Component {
+	render() {
+		if ( !this.props.children ) {
+			return null;
+		}
+
+		let { href = this.props.children } = this.props;
+
+		return (
+			<ProfileItem><a href={ href }>{ this.props.children }</a></ProfileItem>
+		);
+	}
+}
+
+class ProfileItem extends Component {
+	render() {
+		if ( !this.props.children ) {
+			return null;
+		}
+
+		return (
+			<p className="profile-item">
+				{ this.props.children }
+			</p>
 		);
 	}
 }
