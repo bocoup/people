@@ -82,9 +82,7 @@ class App extends Component {
 		let slug = this.props.params.slug;
 
 		if ( slug ) {
-			return profiles.filter( emp =>
-				( emp.slug === slug )
-			);
+			return profiles.find( "slug", slug );
 		} else {
 			return profiles;
 		}

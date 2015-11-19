@@ -1,4 +1,4 @@
-import React, { Component } from "react"; // eslint-disable-line no-unused-vars
+import React, { Component } from "react";
 
 class ProfileEdit extends Component {
 	constructor() {
@@ -22,7 +22,7 @@ class ProfileEdit extends Component {
 
 	get changeValue() {
 		return event => this.setState( {
-			value: event.input.value
+			value: event.target.value
 		} );
 	}
 
@@ -30,7 +30,7 @@ class ProfileEdit extends Component {
 		return event => {
 			event.preventDefault();
 
-			// TODO: call parent saving item
+			this.props.onSave( this.state.value );
 
 			this.setState( {
 				viewMode: true
@@ -83,12 +83,21 @@ class ProfileEdit extends Component {
 	}
 
 	render() {
+		let button = this.props.canEdit ? this.button : null;
 		return (
 			<span>
 				{ this.control }
-				{ this.button }
+				{ button }
 			</span>
 		);
+	}
+
+	static get propTypes() {
+		return {
+			value: React.PropTypes.string,
+			canEdit: React.PropTypes.bool,
+			onSave: React.PropTypes.func
+		};
 	}
 }
 

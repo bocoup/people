@@ -16,7 +16,7 @@ class Profile extends Component {
 
 	componentWillMount() {
 		this.setState( {
-			profile: this.props.profiles[ 0 ]
+			profile: this.props.profiles
 		} );
 	}
 
@@ -35,9 +35,22 @@ class Profile extends Component {
 		return view;
 	}
 
+	setChanges( key ) {
+		return value => {
+			let changes = {};
+			changes[ key ] = value;
+
+			this.state.profile.save( changes );
+
+			// TODO: linkState should be used here
+			return this.setState( {
+				profile: this.state.profile
+			} );
+		};
+	}
+
 	render() {
-		let isUser = null;
-		let profile = this.props.profiles[ 0 ];
+		let profile = this.state.profile;
 		let {
 			name,
 			position_name,
@@ -51,8 +64,7 @@ class Profile extends Component {
 			irc,
 			id
 		} = profile;
-
-		isUser = id === this.props.uid;
+		let isUser = id === this.props.uid;
 
 		// Each Item represents a <p class="profile-item" /> and it will print
 		// only if the provided children has contents
@@ -63,14 +75,17 @@ class Profile extends Component {
 			<div>
 				<h1>{ name }</h1>
 				<h2>{ position_name }</h2>
-				{ isUser }
 
 				<Item>
 					<ProfileLink custom="mailto" href={ email } />
 				</Item>
 
 				<Item>
-					<ProfileEdit value={ phone } canEdit={ isUser }>
+					<ProfileEdit
+						value={ phone }
+						canEdit={ isUser }
+						onSave={ this.setChanges( "phone" ) }
+					>
 						<ProfileLink custom="tel" href={ phone } />
 					</ProfileEdit>
 				</Item>
