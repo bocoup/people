@@ -16,6 +16,9 @@ class ProfileLink extends Component {
 	}
 
 	render() {
+		if ( !this.props.href ) {
+			return null;
+		}
 		return (
 			<a href={ this.resolveHref() }>{ this.content() }</a>
 		);

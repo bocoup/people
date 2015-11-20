@@ -67,6 +67,10 @@ class ProfileEdit extends Component {
 		return buttons[ this.state.viewMode ? "view" : "edit" ];
 	}
 
+	get editButtons() {
+		return this.props.canEdit ? this.button : null;
+	}
+
 	get editInput() {
 		return (
 			<input
@@ -87,11 +91,13 @@ class ProfileEdit extends Component {
 	}
 
 	render() {
-		let button = this.props.canEdit ? this.button : null;
+		if ( this.props.value === null && typeof this.props.value === "object" ) {
+			return null;
+		}
 		return (
 			<span>
 				{ this.control }
-				{ button }
+				{ this.editButtons }
 			</span>
 		);
 	}
@@ -99,8 +105,8 @@ class ProfileEdit extends Component {
 	static get propTypes() {
 		return {
 			value: React.PropTypes.string,
-			canEdit: React.PropTypes.bool,
-			onSave: React.PropTypes.func
+			canEdit: React.PropTypes.bool.isRequired,
+			onSave: React.PropTypes.func.isRequired
 		};
 	}
 }
