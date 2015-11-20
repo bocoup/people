@@ -40,12 +40,7 @@ class Profile extends Component {
 			let changes = {};
 			changes[ key ] = value;
 
-			this.state.profile.save( changes, { patch: true } );
-
-			// TODO: linkState should be used here
-			return this.setState( {
-				profile: this.state.profile
-			} );
+			return this.state.profile.save( changes, { patch: true } );
 		};
 	}
 

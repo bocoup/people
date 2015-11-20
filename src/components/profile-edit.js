@@ -33,7 +33,8 @@ class ProfileEdit extends Component {
 			this.props.onSave( this.state.value );
 
 			this.setState( {
-				viewMode: true
+				viewMode: true,
+				content: this.state.value
 			} );
 		};
 	}
