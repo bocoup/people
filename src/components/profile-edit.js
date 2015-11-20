@@ -5,8 +5,8 @@ class ProfileEdit extends Component {
 		super();
 
 		this.state = {
-			value: "",
-			viewMode: true
+			viewMode: true,
+			value: ""
 		};
 	}
 
@@ -33,41 +33,44 @@ class ProfileEdit extends Component {
 			this.props.onSave( this.state.value );
 
 			this.setState( {
-				viewMode: true,
-				content: this.state.value
+				viewMode: true
 			} );
 		};
 	}
 
+	get cancelEdit() {
+		return () => this.setState( {
+			value: this.props.value,
+			viewMode: true
+		} );
+	}
+
 	componentWillMount() {
 		this.setState( {
-			value: this.props.value,
-			content: this.props.children || this.props.value
+			value: this.props.value
 		} );
 	}
 
 	get button() {
-		let modes = {
-			view: {
-				action: this.editItem,
-				name: "edit"
-			},
-			edit: {
-				action: this.saveItem,
-				name: "save"
-			}
+		let buttons = {
+			view: (
+				<button onClick={ this.editItem }>edit</button>
+			),
+			edit: (
+				<span>
+					<button onClick={ this.saveItem }>save</button>
+					<button onClick={ this.cancelEdit }>cancel</button>
+				</span>
+			)
 		};
 
-		let { action, name } = modes[ this.state.viewMode ? "view" : "edit" ];
-
-		return (
-			<button onClick={ action }>{ name }</button>
-		);
+		return buttons[ this.state.viewMode ? "view" : "edit" ];
 	}
 
 	get editInput() {
 		return (
-			<input type="text"
+			<input
+				type={ this.props.type || "text" }
 				value={ this.state.value }
 				onChange={ this.changeValue }
 			/>
@@ -76,7 +79,7 @@ class ProfileEdit extends Component {
 
 	get control() {
 		let modes = {
-			view: this.state.content,
+			view: this.props.children,
 			edit: this.editInput
 		};
 

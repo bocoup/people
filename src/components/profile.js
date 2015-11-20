@@ -10,13 +10,15 @@ class Profile extends Component {
 		super();
 
 		this.state = {
-			profile: {}
+			profile: {},
+			phone: ""
 		};
 	}
 
 	componentWillMount() {
 		this.setState( {
-			profile: this.props.profiles
+			profile: this.props.profiles,
+			phone: this.props.profiles.phone
 		} );
 	}
 
@@ -40,7 +42,12 @@ class Profile extends Component {
 			let changes = {};
 			changes[ key ] = value;
 
-			return this.state.profile.save( changes, { patch: true } );
+			this.setState( changes );
+
+			return this.state.profile.save(
+				changes,
+				{ patch: true }
+			);
 		};
 	}
 
@@ -50,7 +57,6 @@ class Profile extends Component {
 			name,
 			position_name,
 			email,
-			phone,
 			website,
 			github,
 			github_user,
@@ -77,11 +83,13 @@ class Profile extends Component {
 
 				<Item>
 					<ProfileEdit
-						value={ phone }
+						value={ this.state.phone }
 						canEdit={ isUser }
 						onSave={ this.setChanges( "phone" ) }
 					>
-						<ProfileLink custom="tel" href={ phone } />
+						<ProfileLink custom="tel" href={ this.state.phone }>
+							{ this.state.phone }
+						</ProfileLink>
 					</ProfileEdit>
 				</Item>
 

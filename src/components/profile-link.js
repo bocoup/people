@@ -1,15 +1,6 @@
 import React, { Component } from "react";
 
 class ProfileLink extends Component {
-	constructor() {
-		super();
-
-		this.state = {
-			href: "",
-			content: ""
-		};
-	}
-
 	resolveHref() {
 		let { custom, href } = this.props;
 
@@ -20,24 +11,13 @@ class ProfileLink extends Component {
 		return href;
 	}
 
-	componentWillMount() {
-		let { children } = this.props;
-		let href = this.resolveHref();
-
-		this.setState( {
-			href,
-			content: children || this.props.href
-		} );
+	content() {
+		return this.props.children || this.props.href;
 	}
 
 	render() {
-		let { href, content } = this.state;
-		if ( !this.state.content ) {
-			return null;
-		}
-
 		return (
-			<a href={ href }>{ content }</a>
+			<a href={ this.resolveHref() }>{ this.content() }</a>
 		);
 	}
 
