@@ -1,9 +1,13 @@
 {
+	"plugins": [
+		"react"
+	],
 	"extends": [
 		"../.eslintrc-defaults.json"
 	],
 	"ecmaFeatures": {
-		"modules": true
+		"modules": true,
+		"jsx": true
 	},
 	"env": {
 		"browser": true,
@@ -12,5 +16,6 @@
 	},
 	"globals": {
 		"APP_ENV": true
-	}
+	},
+	"parser": "babel-eslint"
 }
