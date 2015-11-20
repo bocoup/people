@@ -16,8 +16,5 @@
 	"globals": {
 		"APP_ENV": true
 	},
-	"plugins": [
-		"react"
-	],
 	"parser": "babel-eslint"
 }
