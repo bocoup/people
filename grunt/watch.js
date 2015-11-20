@@ -36,9 +36,9 @@ module.exports = function( grunt ) {
 				"!tests/qunit/*"
 			],
 			tasks: [
-				"eslint",
-				"webpack:dev",
-				"webpack:test",
+				"concurrent:eslint",
+				"clean",
+				"concurrent:files",
 				"karma:watch:run"
 			]
 		}
