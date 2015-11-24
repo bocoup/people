@@ -3,12 +3,9 @@ module.exports = function( grunt ) {
 	grunt.loadTasks( "grunt" );
 
 	grunt.registerTask( "dev", [
-		"eslint",
+		"concurrent:eslint",
 		"clean",
-		"copy",
-		"stylus:dev",
-		"template:dev",
-		"webpack:dev"
+		"concurrent:files"
 	] );
 
 	grunt.registerTask( "test", [
