@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bocoup/new-people.git"
+    "url": "git+https://github.com/bocoup/people.git"
   },
   "author": "Leo Balter",
   "license": "MIT",

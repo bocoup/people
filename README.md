@@ -56,7 +56,7 @@ the `grunt` directory, `grunt` will need to be restarted.
 
 ## Continuous Deployment
 
-Merging to `production` will automatically trigger a deploy to new-people.bocoup.com, and merging to `master` will deploy to new-people-staging.bocoup.com.
+Merging to `production` will automatically trigger a deploy to people.bocoup.com, and merging to `master` will deploy to people-staging.bocoup.com.
 
 In the (hopefully) rare instance you need to manually deploy the steps are below.
 
@@ -157,7 +157,7 @@ $ ./deploy/run-playbook.sh deploy production
 
 You can see what version is deployed using this url or one like it:
 
-`https://new-people.bocoup.com/assets/build.txt`
+`https://people.bocoup.com/assets/build.txt`
 
 ## Configuration
 
