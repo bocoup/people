@@ -3,4 +3,4 @@
 # production server's FQDN. This is likely the only change you will need to
 # make between production and staging.
 
-new-people-staging.bocoup.com site_fqdn=new-people-staging.bocoup.com commit=master
+people-staging.bocoup.com site_fqdn=people-staging.bocoup.com commit=master

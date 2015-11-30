@@ -1,4 +1,4 @@
 # Specify your production app server here. This should match the ansible
 # group_vars/all site_fqdn setting.
 
-new-people.bocoup.com site_fqdn=new-people.bocoup.com commit=production
+people.bocoup.com site_fqdn=people.bocoup.com commit=production
