@@ -16,7 +16,7 @@
   "license": "MIT",
   "devDependencies": {
     "ampersand-jsonapi-collection": "^1.1.0",
-    "ampersand-jsonapi-model": "^1.2.0",
+    "ampersand-jsonapi-model": "^2.0.2",
     "babel-core": "^6.1.2",
     "babel-eslint": "^4.1.5",
     "babel-loader": "^6.1.0",
