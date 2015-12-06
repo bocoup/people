@@ -8,7 +8,7 @@ const config = Object.create( null, {
 			// Rename it to
 			production: "https://api.bocoup.com/v3/",
 			staging: "https://api-staging.bocoup.com/v3/",
-			development: "http://api.loc/v3/",
+			development: "https://api-staging.bocoup.com/v3/",
 			test: "http://localhost:8888/"
 		}
 	},
