@@ -9,4 +9,7 @@
     - {role: configure, tags: configure}
     - {role: nginx, tags: nginx}
   handlers:
-    - include: handlers/handlers.yml
+    - name: restart nginx
+      service: name=nginx state=restarted
+    - name: restart sshd
+      service: name=ssh state=restarted
