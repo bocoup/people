@@ -8,8 +8,8 @@ const Employee = AppModel.extend( {
 
 	props: {
 		id: "string",
-		date_end: "string",
-		date_start: "string",
+		last_day: "string",
+		first_day: "string",
 		email: "string",
 		email_personal: "string",
 		first: "string",
