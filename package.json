@@ -51,6 +51,7 @@
     "webpack-dev-server": "^1.12.1"
   },
   "dependencies": {
+    "query-string": "^3.0.0",
     "react-router-oauth": "^0.2.0"
   }
 }

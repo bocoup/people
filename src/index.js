@@ -6,7 +6,7 @@ import App from "./components/app";
 import List from "./components/list";
 import Profile from "./components/profile";
 import NoMatch from "./components/no-match";
-import auth from "./service/auth";
+import auth from "./util/auth";
 
 render( (
 	<Router history={ createHistory() }>
