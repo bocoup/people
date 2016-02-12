@@ -1,43 +1,4 @@
-// Create config object using properties descriptors, by default they are
-// not writable and not configurable (cannot be deleted). They also allow using
-// get and set methods.
-const config = Object.create( null, {
-	roots: {
-		value: {
+const isProduction = process.env.NODE_ENV === "production";
 
-			// Rename it to
-			production: "https://api.bocoup.com/v3/",
-			staging: "https://api-staging.bocoup.com/v3/",
-			development: "https://api-staging.bocoup.com/v3/",
-			test: "http://localhost:8888/"
-		}
-	},
-
-	/**
-	 * Computes the current API root or base_url for the app
-	 */
-	API_ROOT: {
-		get() {
-			const root = this.roots[ APP_ENV ];
-
-			if ( !root ) {
-				throw new Error( `Unrecognized environment: '${ APP_ENV }'` );
-			}
-
-			return root;
-		},
-		set() {
-			throw new Error( "Cannot set any value to config.API_ROOT" );
-		}
-	},
-
-	authProvider: {
-		get() {
-			const authRoot = `${this.API_ROOT}auth/authenticate`;
-
-			return `${authRoot}?provider=github&referer=${ location.href }`;
-		}
-	}
-} );
-
-export default config;
+export const API_BASE_URL = `https://${isProduction ? "api" : "api-staging"}.bocoup.com/v3`;
+export const API_AUTH_URL = `${API_BASE_URL}/auth/authenticate`;

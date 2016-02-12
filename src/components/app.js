@@ -1,8 +1,6 @@
 import React, { Component } from "react"; // eslint-disable-line no-unused-vars
-import Auth from "./auth";
-import config from "../config.js";
 import { Link } from "react-router";
-import authRecord from "../util/auth-record";
+import AuthStatus from "./auth-status";
 
 // Data is being fetched from the employees model
 import fetchProfiles from "../requests/employees";
@@ -11,37 +9,9 @@ class App extends Component {
 	constructor() {
 		super();
 
-		let { token, uid } = authRecord.get();
-
 		this.state = {
-			token,
-			uid,
 			profiles: false
 		};
-	}
-
-	setAuth( data ) {
-		authRecord.set( data );
-		this.setState( data );
-
-		this.props.history.replaceState(
-			this.props.location,
-			this.props.location.pathname
-		);
-	}
-
-	logOut() {
-		authRecord.clear();
-		this.setState( {
-			token: "",
-			uid: "",
-			profiles: false
-		} );
-		window.location = "/";
-	}
-
-	logIn() {
-		window.location = config.authProvider;
 	}
 
 	componentWillMount() {
@@ -53,19 +23,8 @@ class App extends Component {
 		this.fetchProfiles();
 	}
 
-	updateComponent() {
-		let query = this.props.location.query;
-
-		if ( !this.state.token && query.hasOwnProperty( "access_token" ) ) {
-			this.setAuth( {
-				token: query.access_token,
-				uid: query.id
-			} );
-		}
-	}
-
 	fetchProfiles() {
-		if ( this.state.token && !this.state.profiles ) {
+		if ( !this.state.profiles ) {
 			fetchProfiles(
 				profiles => this.setState( { profiles } ),
 				error => {
@@ -105,11 +64,7 @@ class App extends Component {
 		return (
 			<div className="container">
 				<h1><Link to="/">People @ Bocoup</Link></h1>
-				<Auth
-					token={ this.state.token }
-					logIn={ this.logIn.bind( this ) }
-					logOut={ this.logOut.bind( this ) }
-				/>
+				<AuthStatus />
 				{ this.populateChildren() }
 			</div>
 		);

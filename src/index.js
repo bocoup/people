@@ -6,12 +6,13 @@ import App from "./components/app";
 import List from "./components/list";
 import Profile from "./components/profile";
 import NoMatch from "./components/no-match";
+import auth from "./service/auth";
 
 render( (
 	<Router history={ createHistory() }>
-		<Route path="/" component={ App }>
+		<Route path="/" component={ App } onEnter={auth.requireNoAuth}>
 			<IndexRoute component={ List } />
-			<Route path="profile/:slug" component={ Profile } />
+			<Route path="profile/:slug" component={ Profile }  />
 
 			<Redirect from="profile" to="/" />
 			<Route path="*" component={ NoMatch } />
