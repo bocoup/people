@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class Auth extends Component {
+class AuthStatus extends Component {
 	doLogIn( event ) {
 		event.preventDefault();
 		this.props.logIn();
@@ -24,10 +24,10 @@ class Auth extends Component {
 	}
 }
 
-Auth.propTypes = {
+AuthStatus.propTypes = {
 	token: React.PropTypes.string,
 	logIn: React.PropTypes.func,
 	logOut: React.PropTypes.func
 };
 
-export default Auth;
+export default AuthStatus;
