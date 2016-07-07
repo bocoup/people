@@ -49,5 +49,8 @@
     "react-router": "^1.0.0",
     "webpack": "^1.12.3",
     "webpack-dev-server": "^1.12.1"
+  },
+  "dependencies": {
+    "react-router-oauth": "^0.2.0"
   }
 }

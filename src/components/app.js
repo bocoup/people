@@ -1,5 +1,5 @@
 import React, { Component } from "react"; // eslint-disable-line no-unused-vars
-import Auth from "./auth";
+import AuthStatus from "./auth-status";
 import config from "../config.js";
 import { Link } from "react-router";
 import authRecord from "../util/auth-record";
@@ -105,7 +105,7 @@ class App extends Component {
 		return (
 			<div className="container">
 				<h1><Link to="/">People @ Bocoup</Link></h1>
-				<Auth
+				<AuthStatus
 					token={ this.state.token }
 					logIn={ this.logIn.bind( this ) }
 					logOut={ this.logOut.bind( this ) }
