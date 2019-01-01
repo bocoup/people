@@ -14,7 +14,7 @@
   },
   "author": "Leo Balter",
   "license": "MIT",
-  "devDependencies": {
+  "dependencies": {
     "ampersand-jsonapi-collection": "^1.1.0",
     "ampersand-jsonapi-model": "^2.0.2",
     "babel-core": "^6.1.2",
