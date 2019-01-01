@@ -54,3 +54,6 @@
 
 - fail: msg="nginx config is invalid"
   when: nginx_test_valid is failed
+
+- include: lets-encrypt.yml
+  when: ssl and env != "development"

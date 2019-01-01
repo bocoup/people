@@ -7,25 +7,23 @@
     creates: "{{dhe_param_path}}"
   notify: restart nginx
 
-- name: create self-signed ssl cert/key - development only!
-  command: >
-    openssl req -new -nodes -x509
-    -subj "/C=US/ST=Oregon/L=Portland/O=IT/CN={{site_fqdn}}" -days 3650
-    -keyout {{ssl_key_path}} -out {{ssl_cert_path}} -extensions v3_ca
-  args:
-    creates: "{{ssl_cert_path}}"
-  when: env == "development"
-  notify: restart nginx
-
-- name: ensure ssl cert/key exist
+- name: Detect existing SSL certificate and key files
   stat: path={{item}}
   register: ssl_files
   with_items:
     - "{{ssl_cert_path}}"
     - "{{ssl_key_path}}"
 
-- fail: msg="ssl cert file {{ssl_cert_path}} missing"
-  when: not ssl_files.results[0].stat.exists
-
-- fail: msg="ssl key file {{ssl_key_path}} missing"
-  when: not ssl_files.results[1].stat.exists
+# In production settings, this project relies on certificates issued by Lets
+# Encrypt. Despite this, a self-signed certificate is initially created so the
+# server can be bootstrapped (nginx would reject the configuration if it
+# referenced a non-existent file).
+- name: create self-signed SSL certificate and key
+  command: >
+    openssl req -new -nodes -x509
+    -subj "/C=US/ST=Oregon/L=Portland/O=IT/CN={{site_fqdn}}" -days 3650
+    -keyout {{ssl_key_path}} -out {{ssl_cert_path}} -extensions v3_ca
+  args:
+    creates: "{{ssl_cert_path}}"
+  when: not ssl_files.results[0].stat.exists and not ssl_files.results[1].stat.exists
+  notify: restart nginx
