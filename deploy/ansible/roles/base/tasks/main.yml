@@ -11,8 +11,10 @@
   with_items: "{{apt_ppas}}"
 
 - name: install apt packages
-  apt: name={{item}} state=latest update_cache=yes
-  with_items: "{{apt_packages}}"
+  apt:
+    name: "{{apt_packages}}"
+    state: latest
+    update_cache: true
 
 - name: update npm to latest
   npm: name=npm state=latest global=yes

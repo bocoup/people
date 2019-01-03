@@ -2,9 +2,9 @@
 # individually, and is provided for convenience. After "vagrant up", this
 # playbook will be run on the new Vagrant box.
 
-- include: provision.yml
-- include: configure.yml
+- import_playbook: provision.yml
+- import_playbook: configure.yml
 
 # Because this playbook targets the "vagrant" inventory host, it will only be
 # run for the Vagrant box, and skipped otherwise.
-- include: vagrant-link.yml
+- import_playbook: vagrant-link.yml

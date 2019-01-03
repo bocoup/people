@@ -6,7 +6,7 @@ The following will need to be installed on your local development machine before
 you can use this workflow. All versions should be the latest available, as some
 required features may not be available in older versions.
 
-* **[Ansible](http://docs.ansible.com/) ^1.9.4**
+* **[Ansible](http://docs.ansible.com/) ^2.7.0**
 	- Install `ansible` via apt (Ubuntu), yum (Fedora), [homebrew][homebrew] (OS
 		X), etc. See the [Ansible installation
 		instructions](http://docs.ansible.com/intro_installation.html) for detailed,
@@ -19,7 +19,7 @@ required features may not be available in older versions.
 	- Install `vagrant` via [homebrew cask][cask] (OS X)
 * **[vagrant-hostsupdater](https://github.com/cogitatio/vagrant-hostsupdater)**
 	- Install with `vagrant plugin install vagrant-hostsupdater` (All platforms)
-* **[node.js ^4.2.1 or ^5.0.0](https://nodejs.org/)**
+* **[node.js ^10.0.0](https://nodejs.org/)**
 	- [Download](https://nodejs.org/) (All platforms)
 	- Install `node` via [homebrew][homebrew]
 * **[grunt-cli](https://github.com/gruntjs/grunt-cli)**

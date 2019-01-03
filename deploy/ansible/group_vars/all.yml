@@ -34,12 +34,14 @@ apt_keys:
 # Node.js 0.12.x: deb https://deb.nodesource.com/node_0.12 trusty main
 # Io.js 1.x:      deb https://deb.nodesource.com/iojs_1.x trusty main
 apt_ppas:
-  - "deb https://deb.nodesource.com/node_5.x trusty main"
+  - "deb https://deb.nodesource.com/node_10.x trusty main"
   - "ppa:git-core/ppa"
+  - "ppa:certbot/certbot"
 
 # Any apt packages to install. Apt package versions may be specified like
 # - git=2.1.0
 apt_packages:
+  - certbot
   - nginx
   - git
   - nodejs
@@ -57,11 +59,11 @@ npm_global_modules: []
 # Should the nginx server use HTTPS instead of HTTP?
 ssl: true
 
-# If ssl is enabled, these cert/key files will be used by nginx. You will need
-# to ensure these files are valid and already on the server (which you can do
-# via cloud-init, scp, etc).
-ssl_cert_path: /etc/ssl/star.bocoup.com.cert
-ssl_key_path: /etc/ssl/star.bocoup.com.key
+# If ssl is enabled, these cert/key files will be used by nginx.
+ssl_cert_path: /etc/ssl/people.bocoup.com.cert
+ssl_key_path: /etc/ssl/people.bocoup.com.key
+
+letsencrypt_email: infrastructure@bocoup.com
 
 # Use a custom parameter for stronger DHE key exchange.
 dhe_param_path: /etc/ssl/certs/dhparam.pem
