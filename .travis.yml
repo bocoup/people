@@ -14,4 +14,3 @@ script:
 - eval "$(ssh-agent -s)"
 - DISPLAY=1 SSH_ASKPASS=./dummy-askpass.sh ssh-add ./deploy/id_ed25519-robocoup-people.bocoup.com < /dev/null
 - ansible-playbook deploy/ansible/deploy.yml --user robocoup --inventory=deploy/ansible/inventory/production
-  -e "ansible_ssh_extra_args='-o StrictHostKeyChecking=no'"
