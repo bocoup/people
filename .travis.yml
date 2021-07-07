@@ -10,6 +10,7 @@ before_install:
 - echo 'echo $SSH_PASSPHRASE' > ./dummy-askpass.sh
 - chmod +x ./dummy-askpass.sh
 - chmod 0600 ./deploy/id_ed25519-robocoup-people.bocoup.com
+- echo '|1|7VSJ1jcNhoYF62Lm8gCa//6Y+qI=|5JKYF+JbVCswOd7AZsILaQBHhDw= ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBOryT+Krc5KhTmuQ3cZHnG9cGxbzWciCT+Cohuw8P9HYdT7VWQmpFxd+QMRargWzMs86LN8k0j5a6KkNJw9ie4E=' >> $HOME/.ssh/known_hosts
 script:
 - eval "$(ssh-agent -s)"
 - DISPLAY=1 SSH_ASKPASS=./dummy-askpass.sh ssh-add ./deploy/id_ed25519-robocoup-people.bocoup.com < /dev/null
