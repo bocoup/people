@@ -9,6 +9,7 @@ before_install:
 - sudo apt install -y ansible
 - echo 'echo $SSH_PASSPHRASE' > ./dummy-askpass.sh
 - chmod +x ./dummy-askpass.sh
+- chmod 0600 ./deploy/id_ed25519-robocoup-people.bocoup.com
 addons:
   ssh_known_hosts: people.bocoup.com
 script:
