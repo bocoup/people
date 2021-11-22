@@ -8,6 +8,7 @@
   roles:
     - {role: configure, tags: configure}
     - {role: nginx, tags: nginx}
+    - {role: certbot, tags: certbot}
   handlers:
     - name: restart nginx
       service: name=nginx state=restarted
