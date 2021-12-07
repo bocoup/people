@@ -12,3 +12,4 @@
     job: "/usr/bin/certbot renew --quiet --no-self-upgrade && service nginx restart"
     minute: 0
     hour: 23
+    
