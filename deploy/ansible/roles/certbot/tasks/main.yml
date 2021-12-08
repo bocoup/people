@@ -4,7 +4,7 @@
     state: present
 
 - name: Run Certbot
-  command: certbot -m infrastructure+api.bocoup.com@bocoup.com --agree-tos -n --domains {{api_fqdn}} --nginx
+  command: certbot -m {{letsencrypt_email}} --agree-tos -n --domains {{api_fqdn}} --nginx
 
 - name: Add cron job for certificate renewal
   cron:
@@ -12,4 +12,5 @@
     job: "/usr/bin/certbot renew --quiet --no-self-upgrade && service nginx restart"
     minute: 0
     hour: 23
+    
     
