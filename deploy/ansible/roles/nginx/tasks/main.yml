@@ -1,8 +1,16 @@
 # Generate nginx config files (and ssl configuration, if ssl was specified),
 # rolling back changes if any part of the config is invalid.
-
-- include: ssl.yml
-  when: ssl
+#
+# For the initial deployment of the application, no certificates will be
+# available, so the server must be configured serve only HTTP traffic. This
+# allows for the initial retrieval of valid SSL certificates; subsequent
+# deployments will configure the server to use the certificates to serve HTTPS
+# traffic.
+- name: Test if certbot has been initialized
+  become: yes
+  stat:
+    path: /etc/letsencrypt/live/{{api_fqdn}}/fullchain.pem
+  register: cert_file
 
 - name: ensure default nginx server is not present
   file: path=/etc/nginx/sites-enabled/default state=absent

@@ -1,0 +1,14 @@
+- name: Install Certbot
+  apt:
+    name: python3-certbot-nginx
+    state: present
+
+- name: Run Certbot
+  command: certbot -m {{letsencrypt_email}} --agree-tos -n --domains {{api_fqdn}} --nginx
+
+- name: Add cron job for certificate renewal
+  cron:
+    name: Certbot automatic renewal.
+    job: "/usr/bin/certbot renew --quiet --no-self-upgrade && service nginx restart"
+    minute: 0
+    hour: 23
