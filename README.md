@@ -1,3 +1,7 @@
+## This service has been discontinued.
+
+Bocoup replaced the "People" service in late 2022 with another solution. This repository is archived, but can be forked or used for informational purposes.
+
 # Nest People
 
 ## Dependencies
